@@ -1,4 +1,5 @@
 package com.example.my_java_api.controller;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,6 +19,12 @@ public class MyControllerTest {
         mockMvc.perform(get("/api/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello, Dockerr!"));
+    }
+
+    @Test
+    public void testGreet() {
+        String result = MyController.greet("Daniela");
+        assertEquals("Hello, Daniela!", result);
     }
 
 }
